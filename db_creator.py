@@ -7,7 +7,7 @@ import pandas as pd
 dataframe = pd.read_csv('Merged_sorted_converted.csv')
 if dataframe.empty == False:
     print('bugcheck456')
-
+#check whether the file is empty or not 
 
 embeddings = OllamaEmbeddings(model='mxbai-embed-large')
 database_location = './chroma_langchain_database'
@@ -34,14 +34,15 @@ vector_store = Chroma(
 
 if add_documents:
     #vector_store.add_documents(documents=documents, ids=ids)
-    batch = 100
-    for i in range(0, len(documents), batch):
-        vector_store.add_documents(
-            documents=documents[i:i + batch],
-            ids=ids[i:i + batch]
-        )
+    #batch = 100
+    #for i in range(0, len(documents), batch):
+        #vector_store.add_documents(
+            #documents=documents[i:i + batch],
+            #ids=ids[i:i + batch]
+        #)
+    vector_store.add_documents(documents=documents, ids=ids)
 
 retriever = vector_store.as_retriever(
-    search_kwargs={"k": 8}
+    search_kwargs={"k": 10}
     )
 

@@ -1,10 +1,10 @@
 from langchain_ollama.llms import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
-from vector import retriever
+from db_creator import retriever
 
 print('bugcheck123')
 
-model = OllamaLLM(model='llama3.2')
+model = OllamaLLM(model='artifish/llama3.2-uncensored')
 
 template = '''
 You are my girlfriend.
