@@ -1,3 +1,8 @@
+##
+##THIS FILE IS FOR TESTING PURPOSES.
+##RUN THIS IF YOU WANT TO EMBED ONLY 1 .csv FILE
+##
+
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document

@@ -9,6 +9,7 @@ from pathlib import Path
 
 csv_directory = Path(__file__).resolve().parent / 'db_csv'
 embedding_batch_size = 50
+PRINT_SKIPPING_COMPLETED_CHUNKS = False
 
 embeddings = OllamaEmbeddings(model='mxbai-embed-large')
 database_location = './chroma_langchain_database'
@@ -61,10 +62,11 @@ for csv_file in sorted(csv_directory.glob('*.csv')):
             ]
 
             if not pending_documents:
-                print(
-                    f'Skipping completed chunk {chunk_number} of {csv_file.name} '
-                    f'({len(dataframe)} rows)'
-                )
+                if PRINT_SKIPPING_COMPLETED_CHUNKS:
+                    print(
+                        f'Skipping completed chunk {chunk_number} of {csv_file.name} '
+                        f'({len(dataframe)} rows)'
+                    )
                 continue
 
             for batch_start in range(0, len(pending_documents), embedding_batch_size):
