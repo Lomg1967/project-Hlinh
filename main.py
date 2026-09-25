@@ -1,6 +1,6 @@
 from langchain_ollama.llms import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
-from db_creator import retriever
+from db_creator_universal import retriever
 
 print('bugcheck123')
 
